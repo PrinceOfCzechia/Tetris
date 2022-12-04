@@ -13,6 +13,7 @@ public class Tetromino
     private int Xoffset;
     private int Yoffset;
     
+    // TODO remove from here
     public Tetromino(int [][] shape, Color color)
     {
         this.shape = shape;
@@ -20,6 +21,7 @@ public class Tetromino
         
         initRotations();
     }
+    // TODO to here
     
     public Tetromino( int num )
     {
@@ -66,16 +68,26 @@ public class Tetromino
     public Color getColor(){ return this.color; }
     public int getX(){ return this.Xoffset; }
     public int getY(){ return this.Yoffset; }
+    public int[][] getNextRotation() { return this.rotations[ currentRotation++ ]; }
     
     public void moveDown(){ this.Yoffset++; }
     public void moveLeft(){ this.Xoffset--; }
     public void moveRight(){ this.Xoffset++; }
+    // to ensure rotation compatibility
+    public void moveUp(){ this.Yoffset--; }
     public void rotate()
     {
         this.currentRotation++;
         this.currentRotation %= 4;
         this.shape = this.rotations[currentRotation];
     } 
+    
+    public void rotateBack()
+    {
+        this.currentRotation--;
+        this.currentRotation %= 4;
+        this.shape = this.rotations[currentRotation];
+    }
     
     public int getBottomEdge(){ return this.Yoffset + this.getHeight(); }
     public int getLeftEdge(){ return this.Xoffset; }

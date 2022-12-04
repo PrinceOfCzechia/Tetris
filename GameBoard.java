@@ -30,6 +30,11 @@ public class GameBoard extends JPanel
         background = new Color[numRows][numCols];
     }
     
+    public void initBackground()
+    {
+        this.background = new Color[ numRows ][ numCols ];
+    }
+    
     public void spawnTetromino()
     {
         Random r = new Random();
@@ -39,7 +44,7 @@ public class GameBoard extends JPanel
     
     public boolean isOutOfBounds()
     {
-        if(tetromino.getY() < 0)
+        if( tetromino.getY() < 0 )
         {
             tetromino = null;
             return true;
@@ -80,8 +85,42 @@ public class GameBoard extends JPanel
     public void rotateTetromino()
     {
         if( tetromino == null ) return;
-        tetromino.rotate();
+        // if( !checkRotation() ) tetromino.rotateBack();
+        checkRotation();
+        while( tetromino.getLeftEdge() < 0 )
+        {
+            tetromino.moveRight();
+        }
+        while( tetromino.getRightEdge() > numCols )
+        {
+            tetromino.moveLeft();
+        }
+        while( tetromino.getBottomEdge() > numRows )
+        {
+            tetromino.moveUp();
+        }
         repaint();
+    }
+    
+    // TODO doesnt work
+    private boolean checkRotation()
+    {
+        int x = 0;
+        int y = 0;
+        tetromino.rotate();
+        int height = tetromino.getHeight();
+        int width = tetromino.getWidth();
+        int[][] shape = tetromino.getShape();
+        for( int col = 0; col < height; col++ )
+        {
+            for( int row = 0; row < width; row++ )
+            {
+                if( shape[ col ][ row ] == 1 ) x = col + tetromino.getX();
+                if( shape[ col ][ row ] == 1 ) y = row + tetromino.getY();
+                if( background[ x ][ y ] != null ) tetromino.rotateBack();/*return false*/;
+            }
+        }
+        return true;
     }
     
     private boolean checkBottom()
