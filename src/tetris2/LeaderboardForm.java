@@ -1,10 +1,16 @@
 package tetris2;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 public class LeaderboardForm extends javax.swing.JFrame {
 
     private DefaultTableModel dtm;
+    private String leaderboardFile = "leaderboard";
 
     public LeaderboardForm() {
         initComponents();
@@ -14,6 +20,40 @@ public class LeaderboardForm extends javax.swing.JFrame {
     private void initTable()
     {
         dtm = ( DefaultTableModel ) leaderboard.getModel();
+        
+        Vector columns = new Vector();
+        columns.add("Name");
+        columns.add("Level");
+        columns.add("Score");
+        
+        try
+        {
+            FileInputStream fs = new FileInputStream( leaderboardFile );
+            ObjectInputStream os = new ObjectInputStream( fs );
+            dtm.setDataVector((Vector)os.readObject(), columns);
+            os.close();
+            fs.close();
+        }   
+        catch( Exception e)
+        {
+            System.out.println("Error loading leaderboard");
+        }
+    }
+    
+    private void saveLeaderboard()
+    {
+        try
+        {
+            FileOutputStream fs = new FileOutputStream( leaderboardFile );
+            ObjectOutputStream os = new ObjectOutputStream( fs );
+            os.writeObject( dtm.getDataVector() );
+            os.close();
+            fs.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error saving leaderboard");
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -87,6 +127,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
     public void addPlayer( String name, int lvl, int score )
     {
         dtm.addRow( new Object[] { name, lvl, score } );
+        saveLeaderboard();
     }
     
     /**
