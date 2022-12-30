@@ -145,6 +145,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
     public void addPlayer( String name, int lvl, int score )
     {
         dtm.addRow( new Object[] { name, lvl, score } );
+        rowSorter.sort();
         saveLeaderboard();
     }
     
