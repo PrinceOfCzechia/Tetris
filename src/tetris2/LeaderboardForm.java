@@ -54,6 +54,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
         ArrayList<SortKey> keys = new ArrayList<>();
         keys.add( new SortKey( 1, SortOrder.DESCENDING ) );
         keys.add( new SortKey( 2, SortOrder.DESCENDING ) );
+        rowSorter.setSortKeys(keys);
     }
     
     private void saveLeaderboard()
