@@ -3,7 +3,6 @@ package tetris2;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 public class GameThread extends Thread
 {
     public volatile boolean play;
@@ -78,11 +77,11 @@ public class GameThread extends Thread
             this.gf.updateScore( this.score );
             if( lvl > this.level )
             {
+                this.level = lvl;
                 this.gf.updateLevel( lvl );
                 this.setPeriod( lvl );
                 System.out.println( this.period );
             }
-            
         }
     }
 }

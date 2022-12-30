@@ -4,17 +4,24 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Vector;
+import javax.swing.RowSorter.SortKey;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class LeaderboardForm extends javax.swing.JFrame {
 
     private DefaultTableModel dtm;
     private String leaderboardFile = "leaderboard";
+    private TableRowSorter<TableModel> rowSorter;
 
     public LeaderboardForm() {
         initComponents();
         initTable();
+        initTableSorter();
     }
     
     private void initTable()
@@ -38,6 +45,15 @@ public class LeaderboardForm extends javax.swing.JFrame {
         {
             System.out.println("Error loading leaderboard");
         }
+    }
+    
+    private void initTableSorter()
+    {
+        this.rowSorter = new TableRowSorter<>( dtm );
+        leaderboard.setRowSorter(rowSorter);
+        ArrayList<SortKey> keys = new ArrayList<>();
+        keys.add( new SortKey( 1, SortOrder.DESCENDING ) );
+        keys.add( new SortKey( 2, SortOrder.DESCENDING ) );
     }
     
     private void saveLeaderboard()
@@ -90,6 +106,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        leaderboard.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(leaderboard);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
