@@ -65,7 +65,7 @@ public class GameThread extends Thread
             // if game over
             if( this.gb.isOutOfBounds() )
             {
-                System.out.println("ERROR");
+                System.out.println("Out of bounds");
                 Tetris2.gameOver( this.level, this.score );
                 break;
             }

@@ -1,9 +1,5 @@
 package tetris2;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Vector;
 import javax.swing.RowSorter.SortKey;
@@ -21,30 +17,24 @@ public class LeaderboardForm extends javax.swing.JFrame {
     public LeaderboardForm() {
         initComponents();
         initTable();
-        initTableSorter();
     }
     
     private void initTable()
     {
         dtm = ( DefaultTableModel ) leaderboard.getModel();
+        int top = Database.getTopId();
         
         Vector columns = new Vector();
         columns.add("Name");
         columns.add("Level");
         columns.add("Score");
         
-        try
-        {
-            FileInputStream fs = new FileInputStream( leaderboardFile );
-            ObjectInputStream os = new ObjectInputStream( fs );
-            dtm.setDataVector((Vector)os.readObject(), columns);
-            os.close();
-            fs.close();
-        }   
-        catch( Exception e)
-        {
-            System.out.println("Error loading leaderboard");
-        }
+        Database.initTable( dtm );
+    }
+    
+    public void updateTable()
+    {
+        Database.updateTable( dtm );
     }
     
     private void initTableSorter()
@@ -57,6 +47,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
         rowSorter.setSortKeys(keys);
     }
     
+    /*
     private void saveLeaderboard()
     {
         try
@@ -72,6 +63,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
             System.out.println("Error saving leaderboard");
         }
     }
+    */
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -149,12 +141,14 @@ public class LeaderboardForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_menuButtonActionPerformed
 
+    /*
     public void addPlayer( String name, int lvl, int score )
     {
         dtm.addRow( new Object[] { name, lvl, score } );
         rowSorter.sort();
         saveLeaderboard();
     }
+    */
     
     /**
      * @param args the command line arguments
