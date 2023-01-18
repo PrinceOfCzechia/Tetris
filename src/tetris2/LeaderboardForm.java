@@ -69,9 +69,13 @@ public class LeaderboardForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         menuButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         leaderboard = new javax.swing.JTable();
+        newGameButton = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -109,15 +113,25 @@ public class LeaderboardForm extends javax.swing.JFrame {
         leaderboard.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(leaderboard);
 
+        newGameButton.setText("Start New Game");
+        newGameButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newGameButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(35, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(menuButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(newGameButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(menuButton)))
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
@@ -126,7 +140,9 @@ public class LeaderboardForm extends javax.swing.JFrame {
                 .addContainerGap(94, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
-                .addComponent(menuButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(menuButton)
+                    .addComponent(newGameButton))
                 .addGap(25, 25, 25))
         );
 
@@ -141,6 +157,11 @@ public class LeaderboardForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_menuButtonActionPerformed
 
+    private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
+        this.setVisible( false );
+        Tetris2.start();
+    }//GEN-LAST:event_newGameButtonActionPerformed
+    
     /*
     public void addPlayer( String name, int lvl, int score )
     {
@@ -186,8 +207,10 @@ public class LeaderboardForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable leaderboard;
     private javax.swing.JButton menuButton;
+    private javax.swing.JButton newGameButton;
     // End of variables declaration//GEN-END:variables
 }
