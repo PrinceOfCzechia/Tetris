@@ -17,10 +17,13 @@ public class LeaderboardForm extends javax.swing.JFrame {
     public LeaderboardForm() {
         initComponents();
         initTable();
+        initRowSorter();
     }
     
     private void initTable()
     {
+        Database.fetchDatabase();
+        
         dtm = ( DefaultTableModel ) leaderboard.getModel();
         int top = Database.getTopId();
         
@@ -35,9 +38,10 @@ public class LeaderboardForm extends javax.swing.JFrame {
     public void updateTable()
     {
         Database.updateTable( dtm );
+        rowSorter.sort();
     }
     
-    private void initTableSorter()
+    private void initRowSorter()
     {
         this.rowSorter = new TableRowSorter<>( dtm );
         leaderboard.setRowSorter(rowSorter);
@@ -46,24 +50,6 @@ public class LeaderboardForm extends javax.swing.JFrame {
         keys.add( new SortKey( 2, SortOrder.DESCENDING ) );
         rowSorter.setSortKeys(keys);
     }
-    
-    /*
-    private void saveLeaderboard()
-    {
-        try
-        {
-            FileOutputStream fs = new FileOutputStream( leaderboardFile );
-            ObjectOutputStream os = new ObjectOutputStream( fs );
-            os.writeObject( dtm.getDataVector() );
-            os.close();
-            fs.close();
-        }
-        catch(Exception e)
-        {
-            System.out.println("Error saving leaderboard");
-        }
-    }
-    */
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -161,16 +147,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
         this.setVisible( false );
         Tetris2.start();
     }//GEN-LAST:event_newGameButtonActionPerformed
-    
-    /*
-    public void addPlayer( String name, int lvl, int score )
-    {
-        dtm.addRow( new Object[] { name, lvl, score } );
-        rowSorter.sort();
-        saveLeaderboard();
-    }
-    */
-    
+        
     /**
      * @param args the command line arguments
      */
