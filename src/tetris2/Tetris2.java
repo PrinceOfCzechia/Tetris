@@ -27,7 +27,7 @@ public class Tetris2 {
     public static void gameOver( int level, int score )
     {
         String name = JOptionPane.showInputDialog("Game over!\nEnter your name:");
-        Database.insert( name, level, score );
+        Database.insertPlayer( name, level, score );
         lf.updateTable();
         gf.setVisible( false );
         lf.setVisible( true );
