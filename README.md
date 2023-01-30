@@ -19,7 +19,7 @@ The player is introduced to the WF where they have a choice to either start a ne
 
 In the GF, the game is played using arrow keys for block movement and "P" to pause the game. There is also a button where one can pause the game manually and two labels display the current score and level. Once the game is over, the player is asked to enter their name which is subsequently saved in the leaderboard.
 
-In the LF, the leaderboard is displayed, the player can either return to the WF or start a new game, which runs in an instance of GF. The leaderboard is sorted by levels and scores of individual players.
+In the LF, the leaderboard is displayed. A player can either return to the WF or start a new game, which runs in an instance of GF. The leaderboard is sorted by levels and scores of individual players.
 
 ## Functionality
 ### WelcomeForm.java
@@ -32,4 +32,4 @@ Here, the leaderboard is displayed. Again, there are two automatically generated
 This class is meant to deal with the game's leaderboard, namely creating one, if it doesn't already exist, saving and loading it, adding new players. Since I am an absolute beginner with DBs, the functionality is very basic.
 
 ### GameBoard.java
-The game runs in this form. It has access to an instance of GameThread and GameBoard, which are initiated as the form starts, actions are assigned to hotkeys and score and level are updated using this class's methods.
+The game runs in this form. It has access to an instance of GameThread and GameBoard, which are initiated as the form starts. Actions are assigned to hotkeys and score and level are updated using this class's methods.
