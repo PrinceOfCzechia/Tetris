@@ -27,6 +27,11 @@ public class OptionsForm extends javax.swing.JFrame {
     {
         OptionsForm.difficulty = 1;
     }
+    
+    private void setDifficulty( int d )
+    {
+        OptionsForm.difficulty = d;
+    }
 
     
 
@@ -40,16 +45,15 @@ public class OptionsForm extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        difficiultyLabel = new javax.swing.JLabel();
+        difficultyLabel = new javax.swing.JLabel();
         easyButton = new javax.swing.JButton();
         mediumButton = new javax.swing.JButton();
         hardButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 600));
 
-        difficiultyLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        difficiultyLabel.setText("Difficulty");
+        difficultyLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        difficultyLabel.setText("Difficulty");
 
         easyButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         easyButton.setText("Easy");
@@ -80,26 +84,26 @@ public class OptionsForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
+                .addGap(151, 151, 151)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(mediumButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(easyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(difficiultyLabel)
-                    .addComponent(hardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(219, Short.MAX_VALUE))
+                    .addComponent(difficultyLabel)
+                    .addComponent(hardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(168, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(difficiultyLabel)
+                .addGap(205, 205, 205)
+                .addComponent(difficultyLabel)
                 .addGap(18, 18, 18)
                 .addComponent(easyButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mediumButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(hardButton)
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
 
         pack();
@@ -109,7 +113,7 @@ public class OptionsForm extends javax.swing.JFrame {
     
     private void mediumButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumButtonActionPerformed
         
-        this.difficulty = 1;
+        setDifficulty( 1 );
         this.setVisible( false );
         Tetris2.showMenu();
         
@@ -117,7 +121,7 @@ public class OptionsForm extends javax.swing.JFrame {
 
     private void easyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyButtonActionPerformed
         
-        this.difficulty = 0;
+        setDifficulty( 0 );
         this.setVisible( false );
         Tetris2.showMenu();
         
@@ -125,7 +129,7 @@ public class OptionsForm extends javax.swing.JFrame {
 
     private void hardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardButtonActionPerformed
         
-        this.difficulty = 2;
+        setDifficulty( 2 );
         this.setVisible( false );
         Tetris2.showMenu();
         
@@ -169,7 +173,7 @@ public class OptionsForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel difficiultyLabel;
+    private javax.swing.JLabel difficultyLabel;
     private javax.swing.JButton easyButton;
     private javax.swing.JButton hardButton;
     private javax.swing.JButton mediumButton;

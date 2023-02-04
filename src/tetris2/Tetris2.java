@@ -48,10 +48,10 @@ public class Tetris2 {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                of = new OptionsForm();
                 gf = new GameForm();
                 lf = new LeaderboardForm();
                 wf = new WelcomeForm();
-                of = new OptionsForm();
                 
                 wf.setVisible( true );
             }

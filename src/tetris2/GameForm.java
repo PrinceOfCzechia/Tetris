@@ -1,5 +1,6 @@
 package tetris2;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
@@ -23,6 +24,7 @@ public class GameForm extends javax.swing.JFrame
     public void startGame()
     {
         gb.initBackground();
+        initDifficultyLabel();
         gt = new GameThread( gb, this );
         gt.start();
     }
@@ -36,7 +38,7 @@ public class GameForm extends javax.swing.JFrame
         im.put( KeyStroke.getKeyStroke( "LEFT" ), "left" );
         im.put( KeyStroke.getKeyStroke( "DOWN" ), "down" );
         im.put( KeyStroke.getKeyStroke( "UP" ), "up" );
-        im.put(KeyStroke.getKeyStroke( 'p' ), "pause");
+        im.put( KeyStroke.getKeyStroke( 'p' ), "pause" );
 
         am.put( "right", new AbstractAction(){
             @Override
@@ -79,6 +81,26 @@ public class GameForm extends javax.swing.JFrame
         } );
     }
     
+    private void initDifficultyLabel()
+    {
+        System.out.println( Tetris2.getDifficulty()); //TODO remove
+        if( Tetris2.getDifficulty() == 0 )
+        {
+            difficultyLabel.setText( "Difficulty: Easy" );
+            difficultyLabel.setForeground( Color.GREEN );
+        }
+        if( Tetris2.getDifficulty() == 1 )
+        {
+            difficultyLabel.setText( "Difficulty: Medium" );
+            difficultyLabel.setForeground(Color.BLACK);
+        }
+        if( Tetris2.getDifficulty() == 2 )
+        {
+            difficultyLabel.setText( "Difficulty: HARD" );
+            difficultyLabel.setForeground( Color.RED );
+        }
+    }
+    
     private void invertPause()
     {
         this.gt.play = !this.gt.play;
@@ -112,6 +134,7 @@ public class GameForm extends javax.swing.JFrame
         levelLabel = new javax.swing.JLabel();
         pauseButton = new javax.swing.JButton();
         menuButton = new javax.swing.JButton();
+        difficultyLabel = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -149,6 +172,7 @@ public class GameForm extends javax.swing.JFrame
         levelLabel.setMinimumSize(new java.awt.Dimension(100, 30));
         levelLabel.setPreferredSize(new java.awt.Dimension(100, 30));
 
+        pauseButton.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         pauseButton.setText("Pause");
         pauseButton.setFocusable(false);
         pauseButton.setPreferredSize(new java.awt.Dimension(70, 30));
@@ -163,6 +187,7 @@ public class GameForm extends javax.swing.JFrame
             }
         });
 
+        menuButton.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
         menuButton.setText("Main Menu");
         menuButton.setFocusable(false);
         menuButton.setPreferredSize(new java.awt.Dimension(83, 30));
@@ -171,6 +196,9 @@ public class GameForm extends javax.swing.JFrame
                 menuButtonActionPerformed(evt);
             }
         });
+
+        difficultyLabel.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        difficultyLabel.setText("Difficulty");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -184,21 +212,24 @@ public class GameForm extends javax.swing.JFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(levelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
+                        .addComponent(difficultyLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addComponent(pauseButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(menuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(GamePlaceholder, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(menuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(GamePlaceholder, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(68, 68, 68))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(scoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(levelLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(difficultyLabel)
+                .addGap(23, 23, 23)
                 .addComponent(GamePlaceholder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -267,6 +298,7 @@ public class GameForm extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel GamePlaceholder;
+    private javax.swing.JLabel difficultyLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel levelLabel;
