@@ -69,3 +69,5 @@ While making the most adictive game ever wasn't the goal here, I (a very mediocr
 - with every new level reached, the loop goes a little faster, precisely
 `period -= ( 1 / (double)divisor ) * 20;`
 where the divisor is the current level, thus the period effectively stops at around 400 miliseconds
+
+The above applies to medium difficulty, with other difficulties, everything behaves similarly but with different initial values.
