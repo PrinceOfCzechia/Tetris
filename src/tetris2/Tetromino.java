@@ -12,16 +12,7 @@ public class Tetromino
     
     private int Xoffset;
     private int Yoffset;
-    
-    // TODO remove from here
-    /*public Tetromino(int [][] shape, Color color)
-    {
-        this.shape = shape;
-        this.color = color;
-        
-        initRotations();
-    }*/
-    // TODO to here
+
     
     public Tetromino( int num )
     {
