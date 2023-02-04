@@ -10,7 +10,14 @@ public class GameThread extends Thread
     private GameForm gf;
     private int score = 0;
     private int level = 1;
-    private int period = 500; 
+    private int period = this.initPeriod(); 
+    
+    private int initPeriod()
+    {
+        if( Tetris2.getDifficulty() == 0 ) return 1000;
+        if( Tetris2.getDifficulty() == 1 ) return 500;
+        else return 300;
+    }
 
     private void setPeriod( int divisor )
     {
