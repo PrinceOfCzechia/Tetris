@@ -7,6 +7,7 @@ public class Tetris2 {
     private static GameForm gf;
     private static LeaderboardForm lf;
     private static WelcomeForm wf;
+    private static OptionsForm of;
     
     public static void start()
     {
@@ -22,6 +23,16 @@ public class Tetris2 {
     public static void showMenu()
     {
         wf.setVisible( true );
+    }
+    
+    public static void showOptions()
+    {
+        of.setVisible( true );
+    }
+    
+    public static int getDifficulty()
+    {
+        return OptionsForm.difficulty;
     }
     
     public static void gameOver( int level, int score )
@@ -40,6 +51,7 @@ public class Tetris2 {
                 gf = new GameForm();
                 lf = new LeaderboardForm();
                 wf = new WelcomeForm();
+                of = new OptionsForm();
                 
                 wf.setVisible( true );
             }

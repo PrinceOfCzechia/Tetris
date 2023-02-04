@@ -18,10 +18,12 @@ public class WelcomeForm extends javax.swing.JFrame {
         startButton = new javax.swing.JButton();
         leaderboardButton = new javax.swing.JButton();
         quitButton = new javax.swing.JButton();
+        optionsButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        startButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         startButton.setText("Start Game");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -29,6 +31,7 @@ public class WelcomeForm extends javax.swing.JFrame {
             }
         });
 
+        leaderboardButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         leaderboardButton.setText("Leaderboard");
         leaderboardButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -36,10 +39,19 @@ public class WelcomeForm extends javax.swing.JFrame {
             }
         });
 
+        quitButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         quitButton.setText("Quit Game");
         quitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quitButtonActionPerformed(evt);
+            }
+        });
+
+        optionsButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        optionsButton.setText("Options");
+        optionsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                optionsButtonActionPerformed(evt);
             }
         });
 
@@ -52,8 +64,9 @@ public class WelcomeForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(leaderboardButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(quitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(161, Short.MAX_VALUE))
+                    .addComponent(quitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(optionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -63,8 +76,10 @@ public class WelcomeForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(leaderboardButton)
                 .addGap(18, 18, 18)
+                .addComponent(optionsButton)
+                .addGap(18, 18, 18)
                 .addComponent(quitButton)
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(209, Short.MAX_VALUE))
         );
 
         pack();
@@ -86,10 +101,17 @@ public class WelcomeForm extends javax.swing.JFrame {
     }//GEN-LAST:event_leaderboardButtonActionPerformed
 
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed
-        
+     
         System.exit( 0 );
         
     }//GEN-LAST:event_quitButtonActionPerformed
+
+    private void optionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_optionsButtonActionPerformed
+        
+        this.setVisible( false );
+        Tetris2.showOptions();
+        
+    }//GEN-LAST:event_optionsButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,6 +150,7 @@ public class WelcomeForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton leaderboardButton;
+    private javax.swing.JButton optionsButton;
     private javax.swing.JButton quitButton;
     private javax.swing.JButton startButton;
     // End of variables declaration//GEN-END:variables
