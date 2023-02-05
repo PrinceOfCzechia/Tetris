@@ -92,7 +92,7 @@ public class GameForm extends javax.swing.JFrame
         if( Tetris2.getDifficulty() == 1 )
         {
             difficultyLabel.setText( "Difficulty: Medium" );
-            difficultyLabel.setForeground(Color.BLACK);
+            difficultyLabel.setForeground( Color.BLACK );
         }
         if( Tetris2.getDifficulty() == 2 )
         {
