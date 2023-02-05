@@ -11,7 +11,6 @@ import javax.swing.table.TableRowSorter;
 public class LeaderboardForm extends javax.swing.JFrame {
 
     private DefaultTableModel dtm;
-    private String leaderboardFile = "leaderboard";
     private TableRowSorter<TableModel> rowSorter;
 
     public LeaderboardForm() {

@@ -24,7 +24,7 @@ public class Tetromino
     
     private void initRotations()
     {
-        this.rotations = new int [4][][];
+        this.rotations = new int [ 4 ][][];
         
         for( int i = 0; i < 4; i++ )
         {
@@ -42,7 +42,7 @@ public class Tetromino
         }
     }
     
-    public void spawn(int numCols)
+    public void spawn( int numCols )
     {
         Random r = new Random();
         // randomly spawn the tetromino from -2 to +2 to the right from the middle
@@ -55,7 +55,7 @@ public class Tetromino
     
     public int[][] getShape(){ return this.shape; }
     public int getHeight(){ return this.shape.length; }
-    public int getWidth(){ return this.shape[0].length; }
+    public int getWidth(){ return this.shape[ 0 ].length; }
     public Color getColor(){ return this.color; }
     public int getX(){ return this.Xoffset; }
     public int getY(){ return this.Yoffset; }
@@ -70,7 +70,7 @@ public class Tetromino
     {
         this.currentRotation++;
         this.currentRotation %= 4;
-        this.shape = this.rotations[currentRotation];
+        this.shape = this.rotations[ currentRotation ];
     } 
     
     public void rotateBack()
@@ -88,13 +88,13 @@ public class Tetromino
     {
         switch( num )
         {
-            case 0: return new int [][] {{1,0},{1,0},{1,1}};
-            case 1: return new int [][] {{0,1},{0,1},{1,1}};
-            case 2: return new int [][] {{1,1},{1,1}};
-            case 3: return new int [][] {{1,0},{1,1},{0,1}};
-            case 4: return new int [][] {{0,1},{1,1},{1,0}};
-            case 5: return new int [][] {{1},{1},{1},{1}};
-            case 6: return new int [][] {{1,0},{1,1},{1,0}};
+            case 0: return new int [][] { {1,0}, {1,0}, {1,1} };
+            case 1: return new int [][] { {0,1}, {0,1}, {1,1} };
+            case 2: return new int [][] { {1,1}, {1,1} };
+            case 3: return new int [][] { {1,0}, {1,1}, {0,1} };
+            case 4: return new int [][] { {0,1}, {1,1}, {1,0} };
+            case 5: return new int [][] { {1}, {1}, {1}, {1} };
+            case 6: return new int [][] { {1,0}, {1,1}, {1,0} };
         }
         // the infamous pentomino, allowing for a glorious pentis move
         return new int [][] {{1},{1},{1},{1},{1}};
@@ -113,7 +113,7 @@ public class Tetromino
             case 6: return new Color( 174, 23, 230 );
         }
         // part of what makes the pentomino so dangerous is that it is white
-        return new Color( 255, 255, 255);
+        return new Color( 255, 255, 255 );
         // fortunately, it never spawns
     }
 }

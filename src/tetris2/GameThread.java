@@ -22,7 +22,7 @@ public class GameThread extends Thread
     private void setPeriod( int divisor )
     {
         double period = (double) this.period;
-        period -= ( 1 / (double)divisor ) * 20;
+        period -= ( 1 / (double) divisor ) * 20;
         this.period = (int) period;
     }
     
@@ -62,7 +62,7 @@ public class GameThread extends Thread
                 {
                     Thread.sleep( period );
                 }
-                catch (InterruptedException ex)
+                catch ( InterruptedException ex )
                 {
                     // once interrupt() was called in the GameForm
                     return;

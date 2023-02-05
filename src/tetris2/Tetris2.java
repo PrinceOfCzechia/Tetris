@@ -37,7 +37,7 @@ public class Tetris2 {
     
     public static void gameOver( int level, int score )
     {
-        String name = JOptionPane.showInputDialog("Game over!\nEnter your name:");
+        String name = JOptionPane.showInputDialog( "Game over!\nEnter your name:" );
         Database.insertPlayer( name, level, score );
         lf.updateTable();
         gf.setVisible( false );
@@ -48,10 +48,10 @@ public class Tetris2 {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                of = new OptionsForm();
                 gf = new GameForm();
                 lf = new LeaderboardForm();
                 wf = new WelcomeForm();
+                of = new OptionsForm();
                 
                 wf.setVisible( true );
             }

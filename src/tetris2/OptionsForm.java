@@ -4,8 +4,6 @@
  */
 package tetris2;
 
-import javax.swing.ButtonGroup;
-
 /**
  *
  * @author Kral
