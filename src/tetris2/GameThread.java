@@ -65,6 +65,7 @@ public class GameThread extends Thread
                 catch ( InterruptedException ex )
                 {
                     // once interrupt() was called in the GameForm
+                    // a.k.a. the "main menu" button was pressed
                     return;
                 }
             }
