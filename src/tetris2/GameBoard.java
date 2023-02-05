@@ -27,7 +27,7 @@ public class GameBoard extends JPanel
         this.setBackground( placeholder.getBackground() );
         this.setBorder( placeholder.getBorder() );
         cellSize = placeholder.getHeight() / numRows;
-        background = new Color[numRows][numCols];
+        background = new Color[ numRows ][ numCols ];
     }
     
     public void initBackground()
@@ -63,7 +63,7 @@ public class GameBoard extends JPanel
     
     public void moveTetrominoRight()
     {
-        if( tetromino == null) return;
+        if( tetromino == null ) return;
         if( checkRight() ) tetromino.moveRight();
     }
     
@@ -134,7 +134,7 @@ public class GameBoard extends JPanel
     private boolean checkBottom()
     {
         // check board boundary
-        if( tetromino.getBottomEdge() == numRows) return false;
+        if( tetromino.getBottomEdge() == numRows ) return false;
         
         // check dead tetrominos below
         int [][] shape = tetromino.getShape();
@@ -169,7 +169,7 @@ public class GameBoard extends JPanel
         int [][] shape = tetromino.getShape();
         int height = tetromino.getHeight();
         int width = tetromino.getWidth();
-        for( int row = 0; row < height; row++)
+        for( int row = 0; row < height; row++ )
         {
             for( int col = 0; col < width; col++ )
             {
@@ -197,7 +197,7 @@ public class GameBoard extends JPanel
         int [][] shape = tetromino.getShape();
         int height = tetromino.getHeight();
         int width = tetromino.getWidth();
-        for( int row = 0; row < height; row++)
+        for( int row = 0; row < height; row++ )
         {
             for( int col = width - 1; col >= 0; col-- )
             {
@@ -239,13 +239,13 @@ public class GameBoard extends JPanel
     private void drawBackground( Graphics g )
     {
         Color color;
-        for( int i = 0; i < numRows; i++)
+        for( int i = 0; i < numRows; i++ )
         {
-            for( int j = 0; j < numCols; j++)
+            for( int j = 0; j < numCols; j++ )
             {
-                color = background[i][j];
+                color = background[ i ][ j ];
                 
-                if(color != null)
+                if( color != null )
                 {
                     int X = j * cellSize;
                     int Y = i * cellSize;
@@ -320,7 +320,7 @@ public class GameBoard extends JPanel
     
     public void shiftDown( int r )
     {
-        for( int row = r; row > 0; row--)
+        for( int row = r; row > 0; row-- )
         {
             for( int col = 0; col < numCols; col++ )
             {
