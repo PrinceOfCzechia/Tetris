@@ -77,7 +77,7 @@ public class Tetromino
     {
         this.currentRotation--;
         this.currentRotation %= 4;
-        this.shape = this.rotations[currentRotation];
+        this.shape = this.rotations[ currentRotation ];
     }
     
     public int getBottomEdge(){ return this.Yoffset + this.getHeight(); }
