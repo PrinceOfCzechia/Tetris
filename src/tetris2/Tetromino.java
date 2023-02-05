@@ -106,7 +106,7 @@ public class Tetromino
         {
             case 0: return new Color( 0, 0, 220 );
             case 1: return new Color( 250, 175, 23 );
-            case 2: return new Color( 250, 250, 0);
+            case 2: return new Color( 250, 250, 0 );
             case 3: return new Color( 0, 255, 51 );
             case 4: return new Color( 240, 51, 51 );
             case 5: return new Color( 51, 255, 255 );
