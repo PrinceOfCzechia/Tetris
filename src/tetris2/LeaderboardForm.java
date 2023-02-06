@@ -64,13 +64,16 @@ public class LeaderboardForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
+        menuButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         menuButton.setText("Back to Main Menu");
+        menuButton.setPreferredSize(new java.awt.Dimension(150, 23));
         menuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuButtonActionPerformed(evt);
             }
         });
 
+        leaderboard.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         leaderboard.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -97,6 +100,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
         leaderboard.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(leaderboard);
 
+        newGameButton.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         newGameButton.setText("Start New Game");
         newGameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,9 +117,9 @@ public class LeaderboardForm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(newGameButton)
+                        .addComponent(newGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(menuButton)))
+                        .addComponent(menuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(36, 36, 36))
         );
         layout.setVerticalGroup(
@@ -125,7 +129,7 @@ public class LeaderboardForm extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(menuButton)
+                    .addComponent(menuButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newGameButton))
                 .addGap(25, 25, 25))
         );
