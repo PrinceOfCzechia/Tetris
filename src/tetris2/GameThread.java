@@ -55,6 +55,7 @@ public class GameThread extends Thread
         {         
             this.gb.spawnTetromino();
             
+            // moves the tetromino down as long as possible
             while ( this.gb.moveTetrominoDown( this ) )
             {
                 try
@@ -68,6 +69,7 @@ public class GameThread extends Thread
                     return;
                 }
             }
+            // proceeds here once the tetromino cannot move anymore
 
             // if game over
             if( this.gb.isOutOfBounds() )

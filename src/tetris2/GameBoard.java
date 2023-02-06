@@ -296,6 +296,7 @@ public class GameBoard extends JPanel
     public int clearLines()
     // checks which rows need to be cleared
     // calls clearOne() on them
+    // returns the number of lines cleared
     {
         int count = 0;
         boolean isFilled;
