@@ -24,7 +24,6 @@ public class LeaderboardForm extends javax.swing.JFrame {
         Database.fetchDatabase();
         
         dtm = ( DefaultTableModel ) leaderboard.getModel();
-        int top = Database.getTopId();
         
         Vector columns = new Vector();
         columns.add("Name");
