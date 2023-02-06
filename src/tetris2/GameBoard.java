@@ -11,16 +11,17 @@ import javax.swing.JPanel;
  */
 public class GameBoard extends JPanel
 {
-    // this is what the game board usually looks like
-    // keeping the placeholders height = 2 * width is essential though
+    // this (20 by 10 cells) is what the game board usually looks like
+    // keeping the placeholders height = 2 * width seems essential though
     final private int numRows = 20;
     final private int numCols = 10;
-    private int cellSize;
+    final private int cellSize;
     private Color[][] background;
     
     private Tetromino tetromino;
     
     public GameBoard( JPanel placeholder )
+    // is constructed based on a JPanel
     {
         placeholder.setVisible( false );
         this.setBounds( placeholder.getBounds() );
@@ -36,6 +37,8 @@ public class GameBoard extends JPanel
     }
     
     public void spawnTetromino()
+    // there are seven different (shape, color) vectors
+    // unambiguously assigned to numbers 0 - 6
     {
         Random r = new Random();
         tetromino = new Tetromino( r.nextInt( 7 ) );
@@ -53,6 +56,9 @@ public class GameBoard extends JPanel
     }
     
     public boolean moveTetrominoDown( GameThread gt )
+    // once false is returned, we check if the tetromino is out of bounds
+    // if yes, GameOver method is called
+    // if not, the tetromino is killed, painted and new one is spawned
     {
         if( checkBottom() == false ) return false;
         while( !gt.play ){};
@@ -61,6 +67,8 @@ public class GameBoard extends JPanel
         return true;
     }
     
+    // in the following methods, tetromino == null if the game is over
+    // then, the methods do nothing, which is what we logically want
     public void moveTetrominoRight()
     {
         if( tetromino == null ) return;
@@ -102,7 +110,6 @@ public class GameBoard extends JPanel
         repaint();
     }
     
-    // TODO doesnt work
     private boolean checkRotation()
     {
         int x = 0;
@@ -217,6 +224,7 @@ public class GameBoard extends JPanel
     }
     
     private void drawTetromino( Graphics g )
+    // gets coordinates, colors what needs to be colored
     {
         int [][] shape = tetromino.getShape();
         int height = tetromino.getHeight();
@@ -237,6 +245,7 @@ public class GameBoard extends JPanel
     }
     
     private void drawBackground( Graphics g )
+    // draws the basic empty grid
     {
         Color color;
         for( int i = 0; i < numRows; i++ )
@@ -256,6 +265,8 @@ public class GameBoard extends JPanel
     }
     
     public void drawDead()
+    // once tetromino cannot move down anymore
+    // this method draws it on the background
     {
         int [][] shape = tetromino.getShape();
         int height = tetromino.getHeight();
@@ -274,6 +285,7 @@ public class GameBoard extends JPanel
     }
     
     private void drawSquare( Graphics g, int X, int Y, Color color )
+    // draws a single cell of the grid
     {                
         g.setColor( color );
         g.fillRect( X, Y, cellSize, cellSize );
@@ -282,6 +294,8 @@ public class GameBoard extends JPanel
     }
     
     public int clearLines()
+    // checks which rows need to be cleared
+    // calls clearOne() on them
     {
         int count = 0;
         boolean isFilled;
@@ -319,6 +333,7 @@ public class GameBoard extends JPanel
     }
     
     public void shiftDown( int r )
+    // moves all colored cells one row down once a line is cleared
     {
         for( int row = r; row > 0; row-- )
         {
@@ -331,6 +346,7 @@ public class GameBoard extends JPanel
     
     @Override
     protected void paintComponent( Graphics g )
+    // overriden blackbox, it is somehow necessary
     {
         super.paintComponent( g );
         
