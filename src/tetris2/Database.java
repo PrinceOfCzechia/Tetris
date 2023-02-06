@@ -14,6 +14,7 @@ public class Database
     }
     
     static boolean databaseExists()
+    // checks for database existence by establishing a connection to it
     {
         try
         {
@@ -47,7 +48,8 @@ public class Database
         catch( SQLException e ){}
     }
     
-    public static void fetchDatabase() // check if the leaderboard already exists, if not, create one
+    public static void fetchDatabase()
+    // checks if the leaderboard already exists, if not, creates one
     {
         if( !databaseExists() ) 
         {
@@ -56,7 +58,8 @@ public class Database
         }
     }
     
-    public static int getTopId() // get the highest id in the current leaderboard
+    public static int getTopId()
+    // gets the highest id in the current leaderboard
     {
         int id = 0;
         try
@@ -88,6 +91,7 @@ public class Database
     }
     
     public static void initTable( DefaultTableModel dtm )
+    // adds the players from the database to the dtm
     {
         try
         {
@@ -103,7 +107,8 @@ public class Database
         catch( SQLException e ){}
     }
     
-    public static void updateTable( DefaultTableModel dtm ) // display the most recent entry in the leaderboard
+    public static void updateTable( DefaultTableModel dtm )
+    // ensures the most recent entry is displayed in the leaderboard
     {
         try
         {

@@ -1,7 +1,7 @@
 package tetris2;
 
 import java.util.ArrayList;
-import java.util.Vector;
+import java.util.Vector; // obsolete, but needed for the defaultTableModel
 import javax.swing.RowSorter.SortKey;
 import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
