@@ -64,8 +64,7 @@ public class Tetromino
     public void moveDown(){ this.Yoffset++; }
     public void moveLeft(){ this.Xoffset--; }
     public void moveRight(){ this.Xoffset++; }
-    // to ensure rotation compatibility
-    public void moveUp(){ this.Yoffset--; }
+    public void moveUp(){ this.Yoffset--; } // to ensure rotation compatibility
     public void rotate()
     {
         this.currentRotation++;
@@ -74,6 +73,7 @@ public class Tetromino
     } 
     
     public void rotateBack()
+    // used in the checkRotation() method
     {
         this.currentRotation--;
         this.currentRotation %= 4;
