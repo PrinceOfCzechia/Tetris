@@ -2,25 +2,27 @@ package tetris2;
 
 public class GameThread extends Thread
 {
-    public volatile boolean play;
-    private GameBoard gb;
-    private GameForm gf;
+    public volatile boolean play; // needs to be volatile for the pause button to work
+    final private GameBoard gb;
+    final private GameForm gf;
     private int score = 0;
     private int level = 1;
     private int period = this.initPeriod(); 
     
     private int initPeriod()
+    // adjusts speed of the game loop according to chosen difficulty
+    // 1 a.k.a. "medium" is the default value
     {
         if( Tetris2.getDifficulty() == 0 ) return 1000;
         if( Tetris2.getDifficulty() == 1 ) return 500;
         else return 300;
     }
 
-    private void setPeriod( int divisor )
+    private void adjustPeriod( int divisor )
     {
-        double period = (double) this.period;
-        period -= ( 1 / (double) divisor ) * 20;
-        this.period = (int) period;
+        double loopPeriod = (double) this.period;
+        loopPeriod -= ( 1 / (double) divisor ) * 20;
+        this.period = (int) loopPeriod;
     }
     
     public int incrementScore( int numCleared )
@@ -83,7 +85,7 @@ public class GameThread extends Thread
             {
                 this.level = lvl;
                 this.gf.updateLevel( lvl );
-                this.setPeriod( lvl );
+                this.adjustPeriod( lvl );
             }
         }
     }
