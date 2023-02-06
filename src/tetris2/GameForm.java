@@ -22,6 +22,7 @@ public class GameForm extends javax.swing.JFrame
     }
     
     public void startGame()
+    // creates an array of type Color[][], colors the difficulty label, starts the game loop
     {
         gb.initBackground();
         initDifficultyLabel();
@@ -30,6 +31,7 @@ public class GameForm extends javax.swing.JFrame
     }
     
     private void initControls()
+    // another blackbox
     {
         InputMap im = this.getRootPane().getInputMap();
         ActionMap am = this.getRootPane().getActionMap();
