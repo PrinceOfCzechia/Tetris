@@ -29,9 +29,9 @@ public class GameThread extends Thread
     {
         switch( numCleared )
         {
-            case 4: return 150;
-            case 3: return 100;
-            case 2: return 70;
+            case 4: return 300;
+            case 3: return 200;
+            case 2: return 120;
             case 1: return 50;
             default: return 10;
         }
